@@ -1,4 +1,3 @@
-import 'dart:convert';
 
 import 'package:dio/dio.dart';
 
@@ -20,12 +19,12 @@ class WebService {
     }
   }
 
-  Future<Movie> fetchDetailMovie(int? movieId) async {
+  Future<Movie> fetchDetailMovie(int movieId) async {
     final response = await dio.get('${ApiConst.BASE_URL}${ApiConst.MOVIE}$movieId?api_key=${ApiConst.API_KEY}');
 
     if (response.statusCode == 200) {
       final result = response.data;
-      return Movie.fromJson(jsonDecode(result));
+      return Movie.fromJson(result);
     } else {
       throw Exception("Failed to get top news");
     }

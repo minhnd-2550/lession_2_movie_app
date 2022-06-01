@@ -21,7 +21,7 @@ class MyApp extends StatelessWidget {
           providers: [
             ChangeNotifierProvider(
               create: (_) => MovieListViewModel(),
-            )
+            ),
           ],
           child: const Movies(),
         ));

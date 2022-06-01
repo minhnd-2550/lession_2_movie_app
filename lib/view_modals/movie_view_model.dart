@@ -1,11 +1,16 @@
 import 'package:flutter/material.dart';
 
 import '../models/movie.dart';
+import '../services/web_service.dart';
 
 class MovieViewModel with ChangeNotifier {
   final Movie _movie;
+  MovieViewModel({Movie? movie}) : _movie = movie!;
+  var movieDetail;
 
-  MovieViewModel({required Movie movie}) : _movie = movie;
+  int? get id {
+    return _movie.id;
+  }
 
   String? get title {
     return _movie.title;
@@ -25,5 +30,11 @@ class MovieViewModel with ChangeNotifier {
 
   String? get posterPath {
     return _movie.posterPath;
+  }
+
+  fetchMovieDetail(int movieId) async {
+    Movie movieDetail = await WebService().fetchDetailMovie(movieId);
+    movieDetail = movieDetail;
+    notifyListeners();
   }
 }

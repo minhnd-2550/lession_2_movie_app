@@ -13,7 +13,7 @@ enum LoadingStatus {
 class MovieListViewModel with ChangeNotifier {
   LoadingStatus loadingStatus = LoadingStatus.searching;
   List<MovieViewModel> movies = [];
-  final _isRefreshing = false;
+  // MovieViewModel movie = {} as MovieViewModel;
   var isLoading = false;
   final _firstPage = 1;
 
